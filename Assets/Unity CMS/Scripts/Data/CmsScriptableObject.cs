@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Linq;
 using GG;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -8,72 +10,116 @@ using Component = UnityEngine.Component;
 
 namespace GG.UnityCMS
 {
-    public enum StyleType
-    {
-        [Description("Image")]IMAGE,
-        [Description("Font")]FONT,
-        [Description("Error")]ERROR
-    }
-
     public class CmsScriptableObject : SerializedScriptableObject
     {
+        public static CmsScriptableObject Active => CmsController.Instance.styleScriptableObject;
+        
         //Gui, Human readable, value
-        public SecondaryKeyDictionary<string, string, CmsData> uiStyles = new SecondaryKeyDictionary<string, string, CmsData>();
+        public SecondaryKeyDictionary<string, string, CmsStyle> styles = new SecondaryKeyDictionary<string, string, CmsStyle>();
 
         public bool HasKey(string humanReadable)
         {
-            return uiStyles.ContainsSecondaryKey(humanReadable);
+            return styles.ContainsSecondaryKey(humanReadable);
         }
+
+        public string GetGuidFromKey(string humanReadableKey)
+        {
+            try
+            {
+                return styles.secondaryKeyLink[humanReadableKey];
+            }
+            catch (Exception e)
+            {
+                Debug.Log($"unable to get guid of key {humanReadableKey}");
+                return "";
+            }
+        }
+
+        public CmsStyle GetOrAddStyle(string humanReadableKey)
+        {
+            CmsStyle style = GetStyle(humanReadableKey);
+
+            if (style == null)
+            {
+                style = AddStyle(humanReadableKey);
+            }
+
+            return style;
+        }
+        
         /// <summary>
-        /// Returns the type of Ui style that the style object would require
+        /// Get a style for a human readable name
         /// </summary>
-        /// <param name="cmsObject"></param>
         /// <returns></returns>
-        public static StyleType GetModuleTypeForObject(Component cmsObject)
+        public CmsStyle GetStyle(CmsGameObject cmsGameObject)
         {
-            if (cmsObject.GetComponent<Image>() != null)
-            {
-                return StyleType.IMAGE;
-            }
-            else if(cmsObject.GetComponent<TextMeshProUGUI>() != null)
-            {
-                return StyleType.FONT;
-            }
-
-            return StyleType.ERROR;
+            return GetStyle(cmsGameObject.humanReadableKey);
         }
         
-        public static bool CheckValidModule(CmsGameObject cmsGameObject)
+        /// <summary>
+        /// Get a style for a human readable name
+        /// </summary>
+        /// <returns></returns>
+        public CmsStyle GetStyle(string humanReadableKey)
         {
-            string guidFromKey = CmsController.GetGuidFromKey(cmsGameObject.humanReadableKey);
-            StyleType styleType = GetModuleTypeForObject(cmsGameObject);
-            switch (styleType)
+            string hiddenGuid = GetGuidFromKey(humanReadableKey);
+            if (styles.primaryDictionary.ContainsKey(hiddenGuid))
             {
-                case StyleType.IMAGE:
-                    return cmsGameObject.GetComponent<Image>() != null && CmsController.Instance.styleScriptableObject.uiStyles.GetValueFromPrimary(guidFromKey).modules.ContainsKey(styleType);
-                case StyleType.FONT:
-                    return cmsGameObject.GetComponent<TextMeshProUGUI>() != null && CmsController.Instance.styleScriptableObject.uiStyles.GetValueFromPrimary(guidFromKey).modules.ContainsKey(styleType);;
-                case StyleType.ERROR:
-                default:
-                    return false;
+                CmsStyle cmsStyle = styles.GetValueFromPrimary(hiddenGuid);
+                return cmsStyle;
+            }
+            else
+            {
+                Debug.LogWarning($"No key matching {humanReadableKey} in {CmsController.Instance.styleScriptableObject}");
             }
 
-            return false;
+            return null;
         }
         
-        public CmsData AddStyle(string guid, string humanReadable, StyleType styleType, GameObject content = null)
-        {
-            CmsData data = AddStyle(guid, humanReadable);
-            data.AddStyle(styleType, content);
-            return data;
-        }
         
-        public CmsData AddStyle(string guid, string humanReadable)
+        /// <summary>
+        /// Get the required module for a cms Object
+        /// </summary>
+        /// <returns></returns>
+        public T GetModule<T>(CmsGameObject cmsGameObject) where T : class
         {
-            CmsData data = new CmsData();
-            uiStyles.Add(guid,data, humanReadable);
+            CmsStyle style = GetStyle(cmsGameObject);
 
-            return data;
+            if (style?.GetModule(cmsGameObject) is T module)
+            {
+                return module;
+            }
+            else
+            {
+                Debug.LogWarning($"No module for {Helpers.GetDataClass(cmsGameObject)} inside style {cmsGameObject.humanReadableKey}");
+            }
+
+            return null;
+        }
+        
+        /// <summary>
+        /// Check if a module exists within a style group
+        /// </summary>
+        /// <param name="cmsGameObject"></param>
+        /// <returns></returns>
+        public bool CheckValidModuleExists(CmsGameObject cmsGameObject)
+        {
+            string guidFromKey = GetGuidFromKey(cmsGameObject.humanReadableKey);
+            Type dataClass = Helpers.GetDataClass(cmsGameObject);
+            
+            return styles.GetValueFromPrimary(guidFromKey).IsModulePresent(dataClass);
+        }
+        
+        /// <summary>
+        /// Add a style to the style map
+        /// </summary>
+        /// <param name="humanReadable"></param>
+        /// <returns></returns>
+        public CmsStyle AddStyle(string humanReadable)
+        {
+            CmsStyle style = new CmsStyle();
+            styles.Add(Guid.NewGuid().ToString(),style, humanReadable);
+            return style;
         }
     }
 }

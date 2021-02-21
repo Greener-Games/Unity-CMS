@@ -10,13 +10,10 @@ using UnityEngine;
 
 namespace GG.UnityCMS.Editor
 {
-    [CustomEditor(typeof(CmsGameObject))]
+    [CustomEditor(typeof(CmsGameObject), true)]
     [CanEditMultipleObjects]
     public class CmsStyleInspector : OdinEditor
     {
-        string key;
-        StyleType style;
-
         CmsGameObject cmsGameObject;
         bool addStyle;
 
@@ -27,12 +24,17 @@ namespace GG.UnityCMS.Editor
         
         protected override void OnEnable()
         {
+            if (target == null)
+            {
+                return;
+            }
+            
             base.OnEnable();
 
             cmsGameObject = (CmsGameObject) target;
-            key = cmsGameObject.humanReadableKey;
-
-            options = CmsController.Instance.styleScriptableObject.uiStyles.SecondaryKeys;
+            newIdentifier = cmsGameObject.humanReadableKey;
+            
+            options = CmsController.Instance.styleScriptableObject.styles.SecondaryKeys;
             if (options.Contains(cmsGameObject.humanReadableKey))
             {
                 currentKey = options.IndexOf(cmsGameObject.humanReadableKey);
@@ -54,6 +56,8 @@ namespace GG.UnityCMS.Editor
                 if (newKey >= 0 && currentKey != newKey)
                 {
                     currentKey = newKey;
+                    newIdentifier = cmsGameObject.humanReadableKey;
+
                     cmsGameObject.humanReadableKey = options[newKey];
                     cmsGameObject.OnValidate();
                 }
@@ -64,7 +68,7 @@ namespace GG.UnityCMS.Editor
             {
                 EditorGUILayout.HelpBox($"Style Key {cmsGameObject.humanReadableKey} does not exist on this style sheet", MessageType.Error);
             }
-            else if (!CmsScriptableObject.CheckValidModule(cmsGameObject))
+            else if (!CmsScriptableObject.Active.CheckValidModuleExists(cmsGameObject))
             {
                 EditorGUILayout.HelpBox("Key does not contain the correct UI element module", MessageType.Error);
             }
@@ -79,24 +83,33 @@ namespace GG.UnityCMS.Editor
                 DrawStyleAdder();
             }
         }
-
+        
         void DrawStyleAdder()
         {
             newIdentifier = EditorGUILayout.TextField("Key", newIdentifier);
-            style = (StyleType) EditorGUILayout.EnumPopup("Type", style);
-
             GUILayout.BeginHorizontal();
             {
                 if (GUILayout.Button("Create"))
                 {
-                    if (CmsController.Instance.HasKey(newIdentifier))
+                    if (CmsScriptableObject.Active.HasKey(newIdentifier))
                     {
-                        Debug.LogError($"{newIdentifier} already exists as a value in the CMS");
+                        Debug.LogWarning($"{newIdentifier} already exists as a value in the CMS, will attempt to add module into this key");
+                    }
+
+                    CmsStyle style = CmsScriptableObject.Active.GetOrAddStyle(newIdentifier);
+                    
+                    if (style.IsModulePresent(cmsGameObject))
+                    {
+                        Debug.LogError($"style {Helpers.GetDataClass(cmsGameObject)} already exists inside {newIdentifier} canceling");
                         return;
                     }
 
-                    CmsController.Instance.styleScriptableObject.AddStyle(Guid.NewGuid().ToString(), newIdentifier,style, cmsGameObject.gameObject);
-                    cmsGameObject.humanReadableKey = newIdentifier;
+                    if (!style.TryAddModule(cmsGameObject))
+                    {
+                        Debug.LogError("Failed to add module");
+                    }
+
+                    addStyle = false;
                 }
 
                 if (GUILayout.Button("Cancel"))

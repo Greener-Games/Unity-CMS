@@ -71,6 +71,11 @@ namespace GG.UnityCMS.Editor
             CmsScriptableObject styleScriptableObject = styleObjects[selectedIndex];
             DrawLine();
 
+            if (styleScriptableObject == null)
+            {
+                return;
+            }
+            
             EditorGUI.BeginChangeCheck();
             {
                 GUILayout.BeginHorizontal();
@@ -93,37 +98,38 @@ namespace GG.UnityCMS.Editor
 
         void DrawModules(CmsScriptableObject styleScriptableObject)
         {
-            GG.SecondaryKeyDictionary<string, string, CmsData> temp = new GG.SecondaryKeyDictionary<string, string, CmsData>(styleScriptableObject.uiStyles);
-            foreach (KeyValuePair<string, CmsData> keyValuePair in temp.primaryDictionary)
+            SecondaryKeyDictionary<string, string, CmsStyle> styleMap = new SecondaryKeyDictionary<string, string, CmsStyle>(styleScriptableObject.styles);
+            
+            foreach (KeyValuePair<string, CmsStyle> pair in styleMap.primaryDictionary)
             {
                 string entryKey;
-                string oldKey = temp.GetSecondaryKey(keyValuePair.Key);
+                string oldKey = styleMap.GetSecondaryKey(pair.Key);
                 EditorGUI.BeginChangeCheck();
                 {
                     GUILayout.BeginHorizontal();
                     {
-                        keyValuePair.Value.foldout = EditorGUILayout.Foldout(keyValuePair.Value.foldout, "Key", Foldout);
+                        pair.Value.foldout = EditorGUILayout.Foldout(pair.Value.foldout, "Key", Foldout);
                         entryKey = EditorGUILayout.TextField(oldKey);
                         
                         if (GUILayout.Button("X", SmallButton))
                         {
-                            styleScriptableObject.uiStyles.RemoveUsingSecondary(oldKey);
+                            styleScriptableObject.styles.RemoveUsingSecondary(oldKey);
                         }
                     }
                     GUILayout.EndHorizontal();
                 }
                 if (EditorGUI.EndChangeCheck())
                 {
-                    if (!styleScriptableObject.uiStyles.secondaryKeyLink.ContainsKey(entryKey))
+                    if (!styleScriptableObject.styles.secondaryKeyLink.ContainsKey(entryKey))
                     {
-                        styleScriptableObject.uiStyles.secondaryKeyLink.ChangeKey(oldKey, entryKey);
+                        styleScriptableObject.styles.secondaryKeyLink.ChangeKey(oldKey, entryKey);
                     }
                 }
 
-                if (keyValuePair.Value.foldout)
+                if (pair.Value.foldout)
                 {
-                    Dictionary<StyleType, CmsModule> modules = keyValuePair.Value.modules;
-                    List<StyleType> emptyModules = new List<StyleType>();
+                    Dictionary<Type, CmsGameObject.CmsModuleData> modules = pair.Value.Modules;
+                    List<Type> emptyModules = new List<Type>();
 
                     GUILayout.BeginHorizontal();
                     {
@@ -132,7 +138,7 @@ namespace GG.UnityCMS.Editor
                         {
                             GUILayout.Space(2.5f);
                             DrawExistingModules(modules, emptyModules);
-                            DrawAddModules(keyValuePair.Value, emptyModules);
+                            DrawAddModules(pair.Value, emptyModules);
                         }
                         GUILayout.EndVertical();
                     }
@@ -146,95 +152,77 @@ namespace GG.UnityCMS.Editor
             GUILayout.Space(2.5f);
             if (GUILayout.Button("Add Ui Style"))
             {
-                string key = Guid.NewGuid().ToString();
-                styleScriptableObject.AddStyle(key,key);
+                styleScriptableObject.AddStyle($"New Ui Style {styleScriptableObject.styles.Count}");
             }
         }
         
         
-        void DrawExistingModules(Dictionary<StyleType, CmsModule> modules, List<StyleType> emptyModules)
+        void DrawExistingModules(Dictionary<Type, CmsGameObject.CmsModuleData> modules, List<Type> emptyModules)
         {
-            foreach (StyleType styleType in (StyleType[]) Enum.GetValues(typeof(StyleType)))
+            IEnumerable<Type> exporters = typeof(CmsGameObject.CmsModuleData)
+                                               .Assembly.GetTypes()
+                                               .Where(t => t.IsSubclassOf(typeof(CmsGameObject.CmsModuleData)) && !t.IsAbstract)
+                                               .Select(t => Activator.CreateInstance(t).GetType());
+
+            foreach (Type cmsModule in exporters)
             {
-                if (!modules.ContainsKey(styleType))
+                if (!modules.ContainsKey(cmsModule))
                 {
-                    emptyModules.Add(styleType);
+                    emptyModules.Add(cmsModule);
                     continue;
                 }
-                
+
+                CmsGameObject.CmsModuleData module = modules[cmsModule];
                 GUILayout.BeginHorizontal();
                 {
-                    modules[styleType].foldout = EditorGUILayout.Foldout(modules[styleType].foldout, styleType.GetDescription());
+                    module.foldout = EditorGUILayout.Foldout(module.foldout, module.ToString());
 
                     if (GUILayout.Button("X", SmallButton))
                     {
-                        modules.Remove(styleType);
+                        modules.Remove(cmsModule);
+                        return;
                     }
                 }
                 GUILayout.EndHorizontal();
 
-                GUILayout.BeginHorizontal();
+                if (module.foldout)
                 {
-                    GUILayout.Space(25);
-                    GUILayout.BeginVertical();
+                    GUILayout.BeginHorizontal();
                     {
-                        GUILayout.Space(2.5f);
-                        if (modules.ContainsKey(styleType) && modules[styleType].foldout)
+                        GUILayout.Space(25);
+                        GUILayout.BeginVertical();
                         {
-                            switch (styleType)
-                            {
-                                case StyleType.IMAGE:
-                                {
-                                    if (modules[styleType] is ImageCmsModule mod)
-                                    {
-                                        mod.color = EditorGUILayout.ColorField("Color", mod.color);
-                                    }
-                                    break;
-                                }
-                                case StyleType.FONT:
-                                {
-                                    if (modules[styleType] is TextMeshCmsModule mod)
-                                    {
-                                        mod.color = EditorGUILayout.ColorField("Color", mod.color);
-                                        mod.font = EditorGUILayout.ObjectField("Font", mod.font, typeof(TMP_FontAsset), false) as TMP_FontAsset;
-                                        mod.fontSize = EditorGUILayout.FloatField("Font Size", mod.fontSize);
-                                    }
-                                    break;
-                                }
-                                default:
-                                    throw new ArgumentOutOfRangeException();
-                            }
+                            GUILayout.Space(2.5f);
+                            module.DrawEditor();
                         }
+                        GUILayout.EndVertical();
                     }
-                    GUILayout.EndVertical();
-                }
-                GUILayout.EndHorizontal();
+                    GUILayout.EndHorizontal();
 
-                GUILayout.Space(2.5f);
+                    GUILayout.Space(2.5f);
+                }
             }
         }
         
-        void DrawAddModules(CmsData style, List<StyleType> emptyModules)
+        void DrawAddModules(CmsStyle style, List<Type> emptyModules)
         {
             List<string> avaiableModules = new List<string>();
-            emptyModules.Remove(StyleType.ERROR); //we never want to show error
             if (emptyModules.Count == 0)
             {
                 return;
             }
 
             avaiableModules.Add("Select Module Type");
-            avaiableModules.AddRange(emptyModules.Select(emptyModule => emptyModule.GetDescription()));
+            avaiableModules.AddRange(emptyModules.Select(emptyModule => emptyModule.ToString()));
             int selected = EditorGUILayout.Popup(0, avaiableModules.ToArray());
 
             if (selected > 0)
             {
                 string selectedModule = avaiableModules[selected];
-                StyleType styleType = EnumExtensions.GetEnumValueFromDescription<StyleType>(selectedModule);
-                style.AddStyle(styleType);
+                style.TryAddModule(Helpers.GetType(selectedModule));
             }
         }
-
+        
         static void DrawLine(float height = 1)
         {
             GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(height));
