@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace GG.UnityCMS
 {
+    [DataAttribute(typeof(ImageCmsModuleData))]
     public class CmsImageObject : CmsGameObject<CmsImageObject.ImageCmsModuleData>
     {
         [System.Serializable]
