@@ -23,6 +23,8 @@ namespace GG.UnityCMS.Editor
         int currentKey = -1;
         List<string> options = new List<string>();
 
+        string newIdentifier;
+        
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -80,21 +82,21 @@ namespace GG.UnityCMS.Editor
 
         void DrawStyleAdder()
         {
-            key = EditorGUILayout.TextField("Key", key);
+            newIdentifier = EditorGUILayout.TextField("Key", newIdentifier);
             style = (StyleType) EditorGUILayout.EnumPopup("Type", style);
 
             GUILayout.BeginHorizontal();
             {
                 if (GUILayout.Button("Create"))
                 {
-                    if (CmsController.Instance.HasKey(key))
+                    if (CmsController.Instance.HasKey(newIdentifier))
                     {
-                        Debug.LogError($"{key} already exists as a value in the CMS");
+                        Debug.LogError($"{newIdentifier} already exists as a value in the CMS");
                         return;
                     }
 
-                    CmsController.Instance.styleScriptableObject.AddStyle(Guid.NewGuid().ToString(), key,style, cmsGameObject.gameObject);
-                    cmsGameObject.humanReadableKey = key;
+                    CmsController.Instance.styleScriptableObject.AddStyle(Guid.NewGuid().ToString(), newIdentifier,style, cmsGameObject.gameObject);
+                    cmsGameObject.humanReadableKey = newIdentifier;
                 }
 
                 if (GUILayout.Button("Cancel"))

@@ -23,20 +23,22 @@ namespace GG.UnityCMS
             {
                 case StyleType.IMAGE:
                 {
-                    modules.Add(styleType, new ImageCmsModule());
+                    ImageCmsModule data = new ImageCmsModule();
                     if (content != null)
                     {
-                        modules[styleType] = new ImageCmsModule().Set(content.GetComponent<Image>());
+                        data.Populate(content);
                     }
+                    modules.Add(styleType, data);
                     break;
                 }
                 case StyleType.FONT:
                 {
-                    modules.Add(styleType, new TextMeshCmsModule());
+                    TextMeshCmsModule data = new TextMeshCmsModule();
                     if (content != null)
                     {
-                        modules[styleType] = new TextMeshCmsModule().Set(content.GetComponent<TextMeshProUGUI>());
+                        data.Populate(content);
                     }
+                    modules.Add(styleType, data);
 
                     break;
                 }
@@ -61,12 +63,12 @@ namespace GG.UnityCMS
                 {
                     case StyleType.IMAGE:
                     {
-                        (modules[styleType] as ImageCmsModule)?.Apply(cmsGameObject.GetComponent<Image>());
+                        (modules[styleType] as ImageCmsModule)?.Apply(cmsGameObject);
                         break;
                     }
                     case StyleType.FONT:
                     {
-                        (modules[styleType] as TextMeshCmsModule)?.Apply(cmsGameObject.GetComponent<TextMeshProUGUI>());
+                        (modules[styleType] as TextMeshCmsModule)?.Apply(cmsGameObject);
                         break;
                     }
                     case StyleType.ERROR:

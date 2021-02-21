@@ -7,21 +7,22 @@ namespace GG.UnityCMS
     {
         public Color color;
 
-        public void Apply(Image img)
+        public override void Apply(GameObject content)
         {
+            Image img = content.GetComponent<Image>();
             if (img != null)
             {
                 img.color = color;
             }
         }
 
-        public ImageCmsModule Set(Image img)
+        public override void Populate(GameObject content)
         {
+            Image img = content.GetComponent<Image>();
             if (img != null)
             {
                 color = img.color;
             }
-            return this;
         }
 }
 }
