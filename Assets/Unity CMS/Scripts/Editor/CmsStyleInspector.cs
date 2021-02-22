@@ -32,7 +32,6 @@ namespace GG.UnityCMS.Editor
             base.OnEnable();
 
             cmsGameObject = (CmsGameObject) target;
-            newIdentifier = cmsGameObject.humanReadableKey;
             
             options = CmsController.Instance.styleScriptableObject.styles.SecondaryKeys;
             if (options.Contains(cmsGameObject.humanReadableKey))
@@ -80,6 +79,7 @@ namespace GG.UnityCMS.Editor
 
             if (addStyle)
             {
+                newIdentifier = cmsGameObject.humanReadableKey;
                 DrawStyleAdder();
             }
         }

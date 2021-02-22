@@ -128,7 +128,7 @@ namespace GG.UnityCMS.Editor
 
                 if (pair.Value.foldout)
                 {
-                    Dictionary<Type, CmsGameObject.CmsModuleData> modules = pair.Value.Modules;
+                    Dictionary<Type, CmsModuleData> modules = pair.Value.Modules;
                     List<Type> emptyModules = new List<Type>();
 
                     GUILayout.BeginHorizontal();
@@ -157,11 +157,11 @@ namespace GG.UnityCMS.Editor
         }
         
         
-        void DrawExistingModules(Dictionary<Type, CmsGameObject.CmsModuleData> modules, List<Type> emptyModules)
+        void DrawExistingModules(Dictionary<Type, CmsModuleData> modules, List<Type> emptyModules)
         {
-            IEnumerable<Type> exporters = typeof(CmsGameObject.CmsModuleData)
+            IEnumerable<Type> exporters = typeof(CmsModuleData)
                                                .Assembly.GetTypes()
-                                               .Where(t => t.IsSubclassOf(typeof(CmsGameObject.CmsModuleData)) && !t.IsAbstract)
+                                               .Where(t => t.IsSubclassOf(typeof(CmsModuleData)) && !t.IsAbstract)
                                                .Select(t => Activator.CreateInstance(t).GetType());
 
             foreach (Type cmsModule in exporters)
@@ -172,7 +172,7 @@ namespace GG.UnityCMS.Editor
                     continue;
                 }
 
-                CmsGameObject.CmsModuleData module = modules[cmsModule];
+                CmsModuleData module = modules[cmsModule];
                 GUILayout.BeginHorizontal();
                 {
                     module.foldout = EditorGUILayout.Foldout(module.foldout, module.ToString());

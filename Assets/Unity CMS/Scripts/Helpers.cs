@@ -32,18 +32,18 @@ namespace GG.UnityCMS
             return null;
         }
 
-        public static CmsGameObject.CmsModuleData CreateModuleObject(Type moduleType)
+        public static CmsModuleData CreateModuleObject(Type moduleType)
         {
             string moduleName = moduleType.ToString();
             return CreateModuleObject(moduleName);
         }
 
-        public static CmsGameObject.CmsModuleData CreateModuleObject(string moduleName)
+        public static CmsModuleData CreateModuleObject(string moduleName)
         {
             Type type = Type.GetType(moduleName);
             if (type != null)
             {
-                return (CmsGameObject.CmsModuleData) Activator.CreateInstance(type);
+                return (CmsModuleData) Activator.CreateInstance(type);
             }
 
             foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies())
@@ -51,7 +51,7 @@ namespace GG.UnityCMS
                 type = asm.GetType(moduleName);
                 if (type != null)
                 {
-                    return (CmsGameObject.CmsModuleData) Activator.CreateInstance(type);
+                    return (CmsModuleData) Activator.CreateInstance(type);
                 }
             }
 
@@ -63,17 +63,11 @@ namespace GG.UnityCMS
         {
             try
             {
-                // Get the Type object corresponding to MyClass.
-                Type myType = gameObject.GetType();
-                
-                // Get an array of nested type objects in MyClass.
-                Type[] nestType = myType.GetNestedTypes();
-                foreach (Type t in nestType)
+                object[] attributes = gameObject.GetType().GetCustomAttributes(typeof(DataAttribute), true);
+                if (attributes.Length > 0)
                 {
-                    if (t.IsSubclassOf(typeof(CmsGameObject.CmsModuleData)))
-                    {
-                        return t;
-                    }
+                    Type t = (attributes[0] as DataAttribute)?.linkedType;
+                    return t;
                 }
             }
             catch(Exception e)

@@ -12,20 +12,19 @@ namespace GG.UnityCMS
 {
     public class CmsStyle
     {
-        [ShowInInspector][SerializeField]Dictionary<Type, CmsGameObject.CmsModuleData> modules = new Dictionary<Type, CmsGameObject.CmsModuleData>();
-        public Dictionary<Type, CmsGameObject.CmsModuleData> Modules => modules;
+        [ShowInInspector][SerializeField]Dictionary<Type, CmsModuleData> modules = new Dictionary<Type, CmsModuleData>();
+        public Dictionary<Type, CmsModuleData> Modules => modules;
         public bool foldout;
 
-        public CmsGameObject.CmsModuleData GetModule(CmsGameObject cmsObject)
+        public CmsModuleData GetModule(CmsGameObject cmsObject)
         {
             return GetModule(Helpers.GetDataClass(cmsObject));
         }
         
-        public CmsGameObject.CmsModuleData GetModule(Type type)
+        public CmsModuleData GetModule(Type type)
         {
             return modules.ContainsKey(type) ? modules[type] : null;
         }
-        
         
         public bool IsModulePresent(CmsGameObject cmsObject)
         {
@@ -49,7 +48,7 @@ namespace GG.UnityCMS
                 return false;
             }
             
-            CmsGameObject.CmsModuleData moduleData = Helpers.CreateModuleObject(styleType);
+            CmsModuleData moduleData = Helpers.CreateModuleObject(styleType);
 
             if (cmsGameObject != null)
             {
