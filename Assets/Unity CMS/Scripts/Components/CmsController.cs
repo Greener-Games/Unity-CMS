@@ -5,17 +5,18 @@ using UnityEngine.Serialization;
 
 namespace GG.UnityCMS
 {
-    public class CmsController : UnitySingleton<CmsController>
+    public class CmsController : UnitySingletonPersistent<CmsController>
     {
         public CmsScriptableObject styleScriptableObject;
         public bool liveUpdate = true;
 
         public void OnValidate()
         {
-            CmsGameObject[] comps = GetComponentsInChildren<CmsGameObject>(true);
+            CmsGameObject[] comps = FindObjectsOfType<CmsGameObject>();
             foreach (CmsGameObject comp in comps)
             {
-                comp.OnValidate();
+                Debug.Log(comp.GetType());
+                comp.Validate();
             }
         }
     }

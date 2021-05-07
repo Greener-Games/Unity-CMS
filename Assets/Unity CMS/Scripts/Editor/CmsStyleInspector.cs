@@ -54,11 +54,7 @@ namespace GG.UnityCMS.Editor
                 int newKey = EditorGUILayout.Popup(currentKey, options.ToArray());
                 if (newKey >= 0 && currentKey != newKey)
                 {
-                    currentKey = newKey;
-                    newIdentifier = cmsGameObject.humanReadableKey;
-
-                    cmsGameObject.humanReadableKey = options[newKey];
-                    cmsGameObject.OnValidate();
+                    SetKey(newKey);
                 }
             }
             GUILayout.EndHorizontal();
@@ -74,12 +70,12 @@ namespace GG.UnityCMS.Editor
 
             if (GUILayout.Button("Add Style"))
             {
+                newIdentifier = cmsGameObject.humanReadableKey;
                 addStyle = true;
             }
 
             if (addStyle)
             {
-                newIdentifier = cmsGameObject.humanReadableKey;
                 DrawStyleAdder();
             }
         }
@@ -91,6 +87,7 @@ namespace GG.UnityCMS.Editor
             {
                 if (GUILayout.Button("Create"))
                 {
+                    bool success = true;
                     if (CmsScriptableObject.Active.HasKey(newIdentifier))
                     {
                         Debug.LogWarning($"{newIdentifier} already exists as a value in the CMS, will attempt to add module into this key");
@@ -101,14 +98,21 @@ namespace GG.UnityCMS.Editor
                     if (style.IsModulePresent(cmsGameObject))
                     {
                         Debug.LogError($"style {Helpers.GetDataClass(cmsGameObject)} already exists inside {newIdentifier} canceling");
+                        success = false;
                         return;
                     }
 
                     if (!style.TryAddModule(cmsGameObject))
                     {
                         Debug.LogError("Failed to add module");
+                        success = false;
                     }
-
+                    
+                    if (success)
+                    {
+                        options.Add(newIdentifier);
+                        SetKey(options.Count - 1);
+                    }
                     addStyle = false;
                 }
 
@@ -118,6 +122,13 @@ namespace GG.UnityCMS.Editor
                 }
             }
             GUILayout.EndHorizontal();
+        }
+
+        void SetKey(int key)
+        {
+            currentKey = key;
+            cmsGameObject.humanReadableKey = options[currentKey];
+            cmsGameObject.Validate();
         }
     }
 }

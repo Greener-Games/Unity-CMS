@@ -14,16 +14,21 @@ namespace GG.UnityCMS
 
         void Awake()
         {
-            OnValidate();
+            Validate();
         }
-        
-        public void OnValidate()
+
+        void OnValidate()
+        {
+            Validate();
+        }
+
+        public virtual void Validate()
         { }
     }
     
     public abstract class CmsGameObject<T> : CmsGameObject where T : class
     {
-        public new void OnValidate()
+        public override void Validate()
         {
             if (Application.isPlaying || CmsController.Instance.liveUpdate)
             {

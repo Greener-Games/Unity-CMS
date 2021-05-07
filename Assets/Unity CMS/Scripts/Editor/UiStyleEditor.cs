@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GG;
+using GG.DataStructures;
 using GG.Extensions;
 using TMPro;
 using UnityEditor;
@@ -17,25 +18,25 @@ namespace GG.UnityCMS.Editor
     {
         protected static readonly float SingleLine = EditorGUIUtility.singleLineHeight;
 
-        static UiStyleEditor _window;
+        static UiStyleEditor window;
 
         static UiStyleEditor Window
         {
             get
             {
-                if (_window == null)
+                if (window == null)
                 {
-                    _window = GetWindow<UiStyleEditor>(true, "Style Editor", true);
-                    _window.minSize = new Vector2(1000, 400);
+                    window = GetWindow<UiStyleEditor>(true, "Style Editor", true);
+                    window.minSize = new Vector2(1000, 400);
                 }
 
-                return _window;
+                return window;
             }
-            set => _window = value;
+            set => window = value;
         }
 
-        static GUIStyle SmallButton => _mSmallButton ?? (_mSmallButton = new GUIStyle(EditorStyles.miniButton) {fixedWidth = 100});
-        static GUIStyle _mSmallButton;
+        static GUIStyle SmallButton => mSmallButton ?? (mSmallButton = new GUIStyle(EditorStyles.miniButton) {fixedWidth = 100});
+        static GUIStyle mSmallButton;
         
         static GUIStyle Foldout => _mFoldout ?? (_mFoldout = new GUIStyle(EditorStyles.foldout) {fixedWidth = 100});
         static GUIStyle _mFoldout;
@@ -43,7 +44,7 @@ namespace GG.UnityCMS.Editor
         int selectedIndex;
         List<CmsScriptableObject> styleObjects = new List<CmsScriptableObject>();
 
-        [MenuItem("Dev Test/Style Sheet", false, 1)]
+        [MenuItem("Unity CMS/Style Sheet", false, 1)]
         static void OpenIcon()
         {
             Open();
@@ -98,9 +99,9 @@ namespace GG.UnityCMS.Editor
 
         void DrawModules(CmsScriptableObject styleScriptableObject)
         {
-            SecondaryKeyDictionary<string, string, CmsStyle> styleMap = new SecondaryKeyDictionary<string, string, CmsStyle>(styleScriptableObject.styles);
+            SecondaryKeyDictionary<Guid, string, CmsStyle> styleMap = new SecondaryKeyDictionary<Guid, string, CmsStyle>(styleScriptableObject.styles);
             
-            foreach (KeyValuePair<string, CmsStyle> pair in styleMap.primaryDictionary)
+            foreach (KeyValuePair<Guid, CmsStyle> pair in styleMap.primaryDictionary)
             {
                 string entryKey;
                 string oldKey = styleMap.GetSecondaryKey(pair.Key);

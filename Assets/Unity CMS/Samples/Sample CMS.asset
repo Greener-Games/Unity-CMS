@@ -1,0 +1,529 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a0ffba2def5c149a0e63a2eb6c8f01, type: 3}
+  m_Name: Sample CMS
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: styles
+      Entry: 7
+      Data: 0|GG.DataStructures.SecondaryKeyDictionary`3[[System.Guid, mscorlib],[System.String,
+        mscorlib],[GG.UnityCMS.CmsStyle, GG.UnityCms]], GG.DataStructures
+    - Name: primaryDictionary
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Guid, mscorlib],[GG.UnityCMS.CmsStyle,
+        GG.UnityCms]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Guid,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 2
+      Data: 511a68f82e5747bfaebae645b981cd1b
+    - Name: $v
+      Entry: 7
+      Data: 3|GG.UnityCMS.CmsStyle, GG.UnityCms
+    - Name: modules
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[CmsModuleData,
+        GG.UnityCms]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 5|System.Collections.Generic.ObjectEqualityComparer`1[[System.Type, mscorlib]],
+        mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 6|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: ImageCmsModuleData, GG.UnityCms
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: 7|ImageCmsModuleData, GG.UnityCms
+    - Name: foldout
+      Entry: 5
+      Data: true
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: foldout
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 2
+      Data: b17728f42305479497ca5d03bec3ca32
+    - Name: $v
+      Entry: 7
+      Data: 8|GG.UnityCMS.CmsStyle, GG.UnityCms
+    - Name: modules
+      Entry: 7
+      Data: 9|System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[CmsModuleData,
+        GG.UnityCms]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 5
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 10|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: TextMeshCmsModuleData, GG.UnityCms
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: 11|TextMeshCmsModuleData, GG.UnityCms
+    - Name: foldout
+      Entry: 5
+      Data: true
+    - Name: font
+      Entry: 6
+      Data: 
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: fontSize
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: foldout
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 2
+      Data: dbb17ffdfd994fe0ba90c475f3089ef2
+    - Name: $v
+      Entry: 7
+      Data: 12|GG.UnityCMS.CmsStyle, GG.UnityCms
+    - Name: modules
+      Entry: 7
+      Data: 13|System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[CmsModuleData,
+        GG.UnityCms]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 14|System.Collections.Generic.ObjectEqualityComparer`1[[System.Type,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 9
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 15|TextMeshCmsModuleData, GG.UnityCms
+    - Name: foldout
+      Entry: 5
+      Data: true
+    - Name: font
+      Entry: 10
+      Data: 0
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: fontSize
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: foldout
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 2
+      Data: b91c3c14f8194d1fa7f4cc70caad9fb5
+    - Name: $v
+      Entry: 7
+      Data: 16|GG.UnityCMS.CmsStyle, GG.UnityCms
+    - Name: modules
+      Entry: 7
+      Data: 17|System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[CmsModuleData,
+        GG.UnityCms]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 14
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 9
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 18|TextMeshCmsModuleData, GG.UnityCms
+    - Name: foldout
+      Entry: 5
+      Data: false
+    - Name: font
+      Entry: 10
+      Data: 0
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: fontSize
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: foldout
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 2
+      Data: e93de5648f74431fa7ffe5a4dfac887a
+    - Name: $v
+      Entry: 7
+      Data: 19|GG.UnityCMS.CmsStyle, GG.UnityCms
+    - Name: modules
+      Entry: 7
+      Data: 20|System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[CmsModuleData,
+        GG.UnityCms]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 21|System.Collections.Generic.ObjectEqualityComparer`1[[System.Type,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 9
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 22|TextMeshCmsModuleData, GG.UnityCms
+    - Name: foldout
+      Entry: 5
+      Data: false
+    - Name: font
+      Entry: 10
+      Data: 0
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: fontSize
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: foldout
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: secondaryKeyLink
+      Entry: 7
+      Data: 23|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Guid,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 24|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Hello world
+    - Name: $v
+      Entry: 2
+      Data: 511a68f82e5747bfaebae645b981cd1b
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: New Ui Style 1
+    - Name: $v
+      Entry: 2
+      Data: b17728f42305479497ca5d03bec3ca32
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Hello world123
+    - Name: $v
+      Entry: 2
+      Data: dbb17ffdfd994fe0ba90c475f3089ef2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: waffles
+    - Name: $v
+      Entry: 2
+      Data: b91c3c14f8194d1fa7f4cc70caad9fb5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: aqweqweqwe
+    - Name: $v
+      Entry: 2
+      Data: e93de5648f74431fa7ffe5a4dfac887a
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

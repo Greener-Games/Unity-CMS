@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using GG;
+using GG.DataStructures;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -15,14 +16,14 @@ namespace GG.UnityCMS
         public static CmsScriptableObject Active => CmsController.Instance.styleScriptableObject;
         
         //Gui, Human readable, value
-        public SecondaryKeyDictionary<string, string, CmsStyle> styles = new SecondaryKeyDictionary<string, string, CmsStyle>();
+        public SecondaryKeyDictionary<Guid, string, CmsStyle> styles = new SecondaryKeyDictionary<Guid, string, CmsStyle>();
 
         public bool HasKey(string humanReadable)
         {
             return styles.ContainsSecondaryKey(humanReadable);
         }
 
-        public string GetGuidFromKey(string humanReadableKey)
+        public Guid GetGuidFromKey(string humanReadableKey)
         {
             try
             {
@@ -31,7 +32,7 @@ namespace GG.UnityCMS
             catch (Exception e)
             {
                 Debug.Log($"unable to get guid of key {humanReadableKey}");
-                return "";
+                return default;
             }
         }
 
@@ -62,10 +63,10 @@ namespace GG.UnityCMS
         /// <returns></returns>
         public CmsStyle GetStyle(string humanReadableKey)
         {
-            string hiddenGuid = GetGuidFromKey(humanReadableKey);
+            Guid hiddenGuid = GetGuidFromKey(humanReadableKey);
             if (styles.primaryDictionary.ContainsKey(hiddenGuid))
             {
-                CmsStyle cmsStyle = styles.GetValueFromPrimary(hiddenGuid);
+                CmsStyle cmsStyle = styles.GetValueUsingPrimaryKey(hiddenGuid);
                 return cmsStyle;
             }
             else
@@ -104,10 +105,10 @@ namespace GG.UnityCMS
         /// <returns></returns>
         public bool CheckValidModuleExists(CmsGameObject cmsGameObject)
         {
-            string guidFromKey = GetGuidFromKey(cmsGameObject.humanReadableKey);
+            Guid guidFromKey = GetGuidFromKey(cmsGameObject.humanReadableKey);
             Type dataClass = Helpers.GetDataClass(cmsGameObject);
             
-            return styles.GetValueFromPrimary(guidFromKey).IsModulePresent(dataClass);
+            return styles.GetValueUsingPrimaryKey(guidFromKey).IsModulePresent(dataClass);
         }
         
         /// <summary>
@@ -118,7 +119,7 @@ namespace GG.UnityCMS
         public CmsStyle AddStyle(string humanReadable)
         {
             CmsStyle style = new CmsStyle();
-            styles.Add(Guid.NewGuid().ToString(),style, humanReadable);
+            styles.Add(Guid.NewGuid(),style, humanReadable);
             return style;
         }
     }
