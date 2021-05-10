@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using GG;
 using GG.DataStructures;
 using GG.Extensions;
@@ -44,6 +45,8 @@ namespace GG.UnityCMS.Editor
         int selectedIndex;
         List<CmsScriptableObject> styleObjects = new List<CmsScriptableObject>();
 
+        List<Type> rawExporters = new List<Type>();
+        
         [MenuItem("Unity CMS/Style Sheet", false, 1)]
         static void OpenIcon()
         {
@@ -54,6 +57,19 @@ namespace GG.UnityCMS.Editor
         {
             Window.Show();
             Window.Init();
+        }
+
+        void OnEnable()
+        {
+            //Get all the assemblies and cms module types in the project
+            rawExporters = new List<Type>();
+            foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                IEnumerable<Type> enumerable = a.GetTypes()
+                                                .Where(t => t.IsSubclassOf(typeof(CmsModuleData)) && !t.IsAbstract)
+                                                .Select(t => Activator.CreateInstance(t).GetType());
+                rawExporters.AddRange(enumerable);
+            }
         }
 
         void Init()
@@ -157,14 +173,10 @@ namespace GG.UnityCMS.Editor
             }
         }
         
-        
         void DrawExistingModules(Dictionary<Type, CmsModuleData> modules, List<Type> emptyModules)
         {
-            IEnumerable<Type> exporters = typeof(CmsModuleData)
-                                               .Assembly.GetTypes()
-                                               .Where(t => t.IsSubclassOf(typeof(CmsModuleData)) && !t.IsAbstract)
-                                               .Select(t => Activator.CreateInstance(t).GetType());
-
+            List<Type> exporters = new List<Type>(rawExporters);
+            
             foreach (Type cmsModule in exporters)
             {
                 if (!modules.ContainsKey(cmsModule))
