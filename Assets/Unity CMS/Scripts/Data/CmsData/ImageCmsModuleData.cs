@@ -1,5 +1,4 @@
 ﻿using GG.UnityCMS;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,11 +15,4 @@ public class ImageCmsModuleData : CmsModuleData
             color = img.color;
         }
     }
-            
-#if UNITY_EDITOR
-    public override void DrawEditor()
-    {
-        color = EditorGUILayout.ColorField("Color", color);
-    }
-#endif
 }

@@ -20,13 +20,4 @@ public class TextMeshCmsModuleData : CmsModuleData
             fontSize = textMeshProUgui.fontSize;
         }
     }
-            
-#if UNITY_EDITOR
-    public override void DrawEditor()
-    {
-        color = EditorGUILayout.ColorField("Color", color);
-        font = EditorGUILayout.ObjectField("Font", font, typeof(TMP_FontAsset), false) as TMP_FontAsset;
-        fontSize = EditorGUILayout.FloatField("Font Size", fontSize);
-    }
-#endif
 }

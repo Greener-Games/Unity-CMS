@@ -1,0 +1,20 @@
+{
+    "name": "GG.UnityCms.Editor",
+    "references": [
+        "GUID:68d5c54205a04f040bf2945a62854cb2",
+        "GUID:dd9c333178b9bf542bbc282197969820",
+        "GUID:bdc258ddd6cc8404f9cf3bb8dc04b59a",
+        "GUID:91018aa887077a148a9037b4dfd0338a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
