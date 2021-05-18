@@ -4,6 +4,7 @@ using System.Linq;
 using GG;
 using GG.DataStructures;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ namespace GG.UnityCMS
         public static CmsScriptableObject Active => CmsController.Instance.styleScriptableObject;
         
         //Gui, Human readable, value
-        public SecondaryKeyDictionary<Guid, string, CmsStyle> styles = new SecondaryKeyDictionary<Guid, string, CmsStyle>();
+        [OdinSerialize][NonSerialized]public SecondaryKeyDictionary<Guid, string, CmsStyle> styles = new SecondaryKeyDictionary<Guid, string, CmsStyle>();
 
         public bool HasKey(string humanReadable)
         {

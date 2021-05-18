@@ -70,6 +70,12 @@ namespace GG.UnityCMS.Editor
             }
         }
 
+        void OnDestroy()
+        {
+            CmsScriptableObject styleScriptableObject = styleObjects[selectedIndex];
+            EditorUtility.SetDirty(styleScriptableObject);
+        }
+
         void Init()
         {
             styleObjects = Resources.FindObjectsOfTypeAll<CmsScriptableObject>().ToList();
