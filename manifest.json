@@ -1,0 +1,370 @@
+{
+  "homepages": [],
+  "source_base_path": "/github/workspace/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.CmsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.CmsController.html",
+          "hash": "rht9ws/zgB6KRqHFpYTf2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.CmsGameObject-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.CmsGameObject-1.html",
+          "hash": "MdpqKLA2YDIQDDdyOjPU5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.CmsGameObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.CmsGameObject.html",
+          "hash": "y6l/2RM1AXa+Cl09XzKeDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.CmsImageObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.CmsImageObject.html",
+          "hash": "TLknT1+EE2tAh/IZ94NtGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.CmsScriptableObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.CmsScriptableObject.html",
+          "hash": "K9WTx7KpXgRO/XDqBYaUqw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.CmsStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.CmsStyle.html",
+          "hash": "EIDCGwBMCjthGNrlnW/Gyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.CmsTextObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.CmsTextObject.html",
+          "hash": "zIx1v9BiZfLU2XMBkj6bgw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.DataAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.DataAttribute.html",
+          "hash": "p5x68konmA382W/fkXjsFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.Editor.CmsStyleInspector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.Editor.CmsStyleInspector.html",
+          "hash": "9un+G5ChtwwerOMiQ+452Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.Editor.UiStyleEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.Editor.UiStyleEditor.html",
+          "hash": "nJWHdz3kyG4z4ZbiyC2zmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.Editor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.Editor.html",
+          "hash": "VAl0NFhHZ9AgmDBNS09cYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.Helpers.html",
+          "hash": "oweg2rKa6NVQ/8Wjx7ibLg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GG.UnityCMS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GG.UnityCMS.html",
+          "hash": "NsqoWIU9MtvcTJuDM5eS4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.CmsModuleData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.CmsModuleData.html",
+          "hash": "98bKLMGGuC797Rd9hpNpMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.ImageCmsModuleData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.ImageCmsModuleData.html",
+          "hash": "LiElaHuzbzXOumvO/P9Ihw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.ScriptableObjectCreator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.ScriptableObjectCreator.html",
+          "hash": "qpA4khzOox0lstFNMQo2Rw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TestData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TestData.html",
+          "hash": "vRvYBTfAXFs3dIY7Vei3AQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TestObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TestObject.html",
+          "hash": "mr51ox6FQxikOaZNTnCEIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TextMeshCmsModuleData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TextMeshCmsModuleData.html",
+          "hash": "GI/n72PnNVj2auRlDvEDLg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.html",
+          "hash": "7zFpAGWT0qSOqtS/1nEnRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "dF/z07P7td7VbfJRm/h6Fg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "hpKGZUWUs13tq1lb9h3sqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/ExampleManual.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/ExampleManual.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/ExampleScriptingApi.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/ExampleScriptingApi.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "+mIf75jf8W6eOqflCn1rVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 1,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 20,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

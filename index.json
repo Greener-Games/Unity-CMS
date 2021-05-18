@@ -1,0 +1,107 @@
+{
+  "api/GG.UnityCMS.CmsController.html": {
+    "href": "api/GG.UnityCMS.CmsController.html",
+    "title": "Class CmsController | Documentation",
+    "keywords": "Class CmsController Inheritance Object GG.Singletons.UnitySingletonPersistent < CmsController > CmsController Inherited Members GG.Singletons.UnitySingletonPersistent<GG.UnityCMS.CmsController>.ValidateInstance(System.Boolean) GG.Singletons.UnitySingletonPersistent<GG.UnityCMS.CmsController>.Awake() GG.Singletons.UnitySingletonPersistent<GG.UnityCMS.CmsController>.OnDestroy() GG.Singletons.UnitySingletonPersistent<GG.UnityCMS.CmsController>.Instance GG.Singletons.UnitySingletonPersistent<GG.UnityCMS.CmsController>.Exists Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax public class CmsController : UnitySingletonPersistent<CmsController> Fields | Improve this Doc View Source liveUpdate Declaration public bool liveUpdate Field Value Type Description Boolean | Improve this Doc View Source styleScriptableObject Declaration public CmsScriptableObject styleScriptableObject Field Value Type Description CmsScriptableObject Methods | Improve this Doc View Source OnValidate() Declaration public void OnValidate()"
+  },
+  "api/GG.UnityCMS.CmsGameObject.html": {
+    "href": "api/GG.UnityCMS.CmsGameObject.html",
+    "title": "Class CmsGameObject | Documentation",
+    "keywords": "Class CmsGameObject Inheritance Object CmsGameObject CmsGameObject<T> Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax public abstract class CmsGameObject : MonoBehaviour Fields | Improve this Doc View Source humanReadableKey Declaration public string humanReadableKey Field Value Type Description String Methods | Improve this Doc View Source Validate() Declaration public virtual void Validate()"
+  },
+  "api/GG.UnityCMS.CmsGameObject-1.html": {
+    "href": "api/GG.UnityCMS.CmsGameObject-1.html",
+    "title": "Class CmsGameObject<T> | Documentation",
+    "keywords": "Class CmsGameObject<T> Inheritance Object CmsGameObject CmsGameObject<T> CmsImageObject CmsTextObject TestObject Inherited Members CmsGameObject.humanReadableKey Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax public abstract class CmsGameObject<T> : CmsGameObject where T : class Type Parameters Name Description T Methods | Improve this Doc View Source Apply(T) Declaration protected abstract void Apply(T component) Parameters Type Name Description T component | Improve this Doc View Source Validate() Declaration public override void Validate() Overrides CmsGameObject.Validate()"
+  },
+  "api/GG.UnityCMS.CmsImageObject.html": {
+    "href": "api/GG.UnityCMS.CmsImageObject.html",
+    "title": "Class CmsImageObject | Documentation",
+    "keywords": "Class CmsImageObject Inheritance Object CmsGameObject CmsGameObject < ImageCmsModuleData > CmsImageObject Inherited Members CmsGameObject<ImageCmsModuleData>.Validate() CmsGameObject.humanReadableKey Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax [Data(typeof(ImageCmsModuleData))] public class CmsImageObject : CmsGameObject<ImageCmsModuleData> Methods | Improve this Doc View Source Apply(ImageCmsModuleData) Declaration protected override void Apply(ImageCmsModuleData content) Parameters Type Name Description ImageCmsModuleData content Overrides GG.UnityCMS.CmsGameObject<ImageCmsModuleData>.Apply(ImageCmsModuleData)"
+  },
+  "api/GG.UnityCMS.CmsScriptableObject.html": {
+    "href": "api/GG.UnityCMS.CmsScriptableObject.html",
+    "title": "Class CmsScriptableObject | Documentation",
+    "keywords": "Class CmsScriptableObject Inheritance Object Sirenix.OdinInspector.SerializedScriptableObject CmsScriptableObject Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax public class CmsScriptableObject : SerializedScriptableObject, ISerializationCallbackReceiver Fields | Improve this Doc View Source styles Declaration public SecondaryKeyDictionary<Guid, string, CmsStyle> styles Field Value Type Description GG.DataStructures.SecondaryKeyDictionary < Guid , String , CmsStyle > Properties | Improve this Doc View Source Active Declaration public static CmsScriptableObject Active { get; } Property Value Type Description CmsScriptableObject Methods | Improve this Doc View Source AddStyle(String) Add a style to the style map Declaration public CmsStyle AddStyle(string humanReadable) Parameters Type Name Description String humanReadable Returns Type Description CmsStyle | Improve this Doc View Source CheckValidModuleExists(CmsGameObject) Check if a module exists within a style group Declaration public bool CheckValidModuleExists(CmsGameObject cmsGameObject) Parameters Type Name Description CmsGameObject cmsGameObject Returns Type Description Boolean | Improve this Doc View Source GetGuidFromKey(String) Declaration public Guid GetGuidFromKey(string humanReadableKey) Parameters Type Name Description String humanReadableKey Returns Type Description Guid | Improve this Doc View Source GetModule<T>(CmsGameObject) Get the required module for a cms Object Declaration public T GetModule<T>(CmsGameObject cmsGameObject) where T : class Parameters Type Name Description CmsGameObject cmsGameObject Returns Type Description T Type Parameters Name Description T | Improve this Doc View Source GetOrAddStyle(String) Declaration public CmsStyle GetOrAddStyle(string humanReadableKey) Parameters Type Name Description String humanReadableKey Returns Type Description CmsStyle | Improve this Doc View Source GetStyle(CmsGameObject) Get a style for a human readable name Declaration public CmsStyle GetStyle(CmsGameObject cmsGameObject) Parameters Type Name Description CmsGameObject cmsGameObject Returns Type Description CmsStyle | Improve this Doc View Source GetStyle(String) Get a style for a human readable name Declaration public CmsStyle GetStyle(string humanReadableKey) Parameters Type Name Description String humanReadableKey Returns Type Description CmsStyle | Improve this Doc View Source HasKey(String) Declaration public bool HasKey(string humanReadable) Parameters Type Name Description String humanReadable Returns Type Description Boolean"
+  },
+  "api/GG.UnityCMS.CmsStyle.html": {
+    "href": "api/GG.UnityCMS.CmsStyle.html",
+    "title": "Class CmsStyle | Documentation",
+    "keywords": "Class CmsStyle Inheritance Object CmsStyle Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax public class CmsStyle Fields | Improve this Doc View Source foldout Declaration public bool foldout Field Value Type Description Boolean Properties | Improve this Doc View Source Modules Declaration public Dictionary<Type, CmsModuleData> Modules { get; } Property Value Type Description Dictionary < Type , CmsModuleData > Methods | Improve this Doc View Source GetModule(CmsGameObject) Declaration public CmsModuleData GetModule(CmsGameObject cmsObject) Parameters Type Name Description CmsGameObject cmsObject Returns Type Description CmsModuleData | Improve this Doc View Source GetModule(Type) Declaration public CmsModuleData GetModule(Type type) Parameters Type Name Description Type type Returns Type Description CmsModuleData | Improve this Doc View Source IsModulePresent(CmsGameObject) Declaration public bool IsModulePresent(CmsGameObject cmsObject) Parameters Type Name Description CmsGameObject cmsObject Returns Type Description Boolean | Improve this Doc View Source IsModulePresent(Type) Declaration public bool IsModulePresent(Type dataClass) Parameters Type Name Description Type dataClass Returns Type Description Boolean | Improve this Doc View Source TryAddModule(CmsGameObject) Declaration public bool TryAddModule(CmsGameObject cmsGameObject) Parameters Type Name Description CmsGameObject cmsGameObject Returns Type Description Boolean | Improve this Doc View Source TryAddModule(Type, CmsGameObject) Declaration public bool TryAddModule(Type styleType, CmsGameObject cmsGameObject = null) Parameters Type Name Description Type styleType CmsGameObject cmsGameObject Returns Type Description Boolean"
+  },
+  "api/GG.UnityCMS.CmsTextObject.html": {
+    "href": "api/GG.UnityCMS.CmsTextObject.html",
+    "title": "Class CmsTextObject | Documentation",
+    "keywords": "Class CmsTextObject Inheritance Object CmsGameObject CmsGameObject < TextMeshCmsModuleData > CmsTextObject Inherited Members CmsGameObject<TextMeshCmsModuleData>.Validate() CmsGameObject.humanReadableKey Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax [Data(typeof(TextMeshCmsModuleData))] public class CmsTextObject : CmsGameObject<TextMeshCmsModuleData> Methods | Improve this Doc View Source Apply(TextMeshCmsModuleData) Declaration protected override void Apply(TextMeshCmsModuleData content) Parameters Type Name Description TextMeshCmsModuleData content Overrides GG.UnityCMS.CmsGameObject<TextMeshCmsModuleData>.Apply(TextMeshCmsModuleData)"
+  },
+  "api/GG.UnityCMS.DataAttribute.html": {
+    "href": "api/GG.UnityCMS.DataAttribute.html",
+    "title": "Class DataAttribute | Documentation",
+    "keywords": "Class DataAttribute Inheritance Object Attribute DataAttribute Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax public class DataAttribute : Attribute, _Attribute Constructors | Improve this Doc View Source DataAttribute(Type) Declaration public DataAttribute(Type type) Parameters Type Name Description Type type Fields | Improve this Doc View Source linkedType Declaration public Type linkedType Field Value Type Description Type"
+  },
+  "api/GG.UnityCMS.Editor.CmsStyleInspector.html": {
+    "href": "api/GG.UnityCMS.Editor.CmsStyleInspector.html",
+    "title": "Class CmsStyleInspector | Documentation",
+    "keywords": "Class CmsStyleInspector Inheritance Object Sirenix.OdinInspector.Editor.OdinEditor CmsStyleInspector Namespace : GG.UnityCMS.Editor Assembly : GG.UnityCms.Editor.dll Syntax public class CmsStyleInspector : OdinEditor Methods | Improve this Doc View Source OnEnable() Declaration protected override void OnEnable() Overrides Sirenix.OdinInspector.Editor.OdinEditor.OnEnable() | Improve this Doc View Source OnInspectorGUI() Declaration public override void OnInspectorGUI() Overrides Sirenix.OdinInspector.Editor.OdinEditor.OnInspectorGUI()"
+  },
+  "api/GG.UnityCMS.Editor.html": {
+    "href": "api/GG.UnityCMS.Editor.html",
+    "title": "Namespace GG.UnityCMS.Editor | Documentation",
+    "keywords": "Namespace GG.UnityCMS.Editor Classes CmsStyleInspector UiStyleEditor"
+  },
+  "api/GG.UnityCMS.Editor.UiStyleEditor.html": {
+    "href": "api/GG.UnityCMS.Editor.UiStyleEditor.html",
+    "title": "Class UiStyleEditor | Documentation",
+    "keywords": "Class UiStyleEditor Inheritance Object UiStyleEditor Namespace : GG.UnityCMS.Editor Assembly : GG.UnityCms.Editor.dll Syntax public class UiStyleEditor : EditorWindow Fields | Improve this Doc View Source SingleLine Declaration protected static readonly float SingleLine Field Value Type Description Single"
+  },
+  "api/GG.UnityCMS.Helpers.html": {
+    "href": "api/GG.UnityCMS.Helpers.html",
+    "title": "Class Helpers | Documentation",
+    "keywords": "Class Helpers Inheritance Object Helpers Namespace : GG.UnityCMS Assembly : GG.UnityCms.dll Syntax public static class Helpers Methods | Improve this Doc View Source CreateModuleObject(String) Declaration public static CmsModuleData CreateModuleObject(string moduleName) Parameters Type Name Description String moduleName Returns Type Description CmsModuleData | Improve this Doc View Source CreateModuleObject(Type) Declaration public static CmsModuleData CreateModuleObject(Type moduleType) Parameters Type Name Description Type moduleType Returns Type Description CmsModuleData | Improve this Doc View Source GetDataClass(CmsGameObject) Declaration public static Type GetDataClass(CmsGameObject gameObject) Parameters Type Name Description CmsGameObject gameObject Returns Type Description Type | Improve this Doc View Source GetType(String) Declaration public static Type GetType(string typeName) Parameters Type Name Description String typeName Returns Type Description Type"
+  },
+  "api/GG.UnityCMS.html": {
+    "href": "api/GG.UnityCMS.html",
+    "title": "Namespace GG.UnityCMS | Documentation",
+    "keywords": "Namespace GG.UnityCMS Classes CmsController CmsGameObject CmsGameObject<T> CmsImageObject CmsScriptableObject CmsStyle CmsTextObject DataAttribute Helpers"
+  },
+  "api/Global.CmsModuleData.html": {
+    "href": "api/Global.CmsModuleData.html",
+    "title": "Class CmsModuleData | Documentation",
+    "keywords": "Class CmsModuleData Inheritance Object CmsModuleData ImageCmsModuleData TestData TextMeshCmsModuleData Namespace : Global Assembly : GG.UnityCms.dll Syntax [Serializable] public abstract class CmsModuleData Fields | Improve this Doc View Source foldout Declaration public bool foldout Field Value Type Description Boolean Properties | Improve this Doc View Source Name Declaration public string Name { get; } Property Value Type Description String Methods | Improve this Doc View Source Populate(CmsGameObject) Declaration public abstract void Populate(CmsGameObject component) Parameters Type Name Description CmsGameObject component | Improve this Doc View Source ToString() Declaration public override string ToString() Returns Type Description String Overrides Object.ToString()"
+  },
+  "api/Global.html": {
+    "href": "api/Global.html",
+    "title": "Namespace Global | Documentation",
+    "keywords": "Namespace Global Classes CmsModuleData ImageCmsModuleData ScriptableObjectCreator TestData TestObject TextMeshCmsModuleData"
+  },
+  "api/Global.ImageCmsModuleData.html": {
+    "href": "api/Global.ImageCmsModuleData.html",
+    "title": "Class ImageCmsModuleData | Documentation",
+    "keywords": "Class ImageCmsModuleData Inheritance Object CmsModuleData ImageCmsModuleData Inherited Members CmsModuleData.Name CmsModuleData.foldout CmsModuleData.ToString() Namespace : Global Assembly : GG.UnityCms.dll Syntax [Serializable] public class ImageCmsModuleData : CmsModuleData Fields | Improve this Doc View Source color Declaration public Color color Field Value Type Description Color Methods | Improve this Doc View Source Populate(CmsGameObject) Declaration public override void Populate(CmsGameObject content) Parameters Type Name Description CmsGameObject content Overrides CmsModuleData.Populate(CmsGameObject)"
+  },
+  "api/Global.ScriptableObjectCreator.html": {
+    "href": "api/Global.ScriptableObjectCreator.html",
+    "title": "Class ScriptableObjectCreator | Documentation",
+    "keywords": "Class ScriptableObjectCreator Inheritance Object Sirenix.OdinInspector.Editor.OdinEditorWindow Sirenix.OdinInspector.Editor.OdinMenuEditorWindow ScriptableObjectCreator Namespace : Global Assembly : Assembly-CSharp.dll Syntax public class ScriptableObjectCreator : OdinMenuEditorWindow, ISerializationCallbackReceiver Methods | Improve this Doc View Source BuildMenuTree() Declaration protected override OdinMenuTree BuildMenuTree() Returns Type Description Sirenix.OdinInspector.Editor.OdinMenuTree Overrides Sirenix.OdinInspector.Editor.OdinMenuEditorWindow.BuildMenuTree() | Improve this Doc View Source DrawEditor(Int32) Declaration protected override void DrawEditor(int index) Parameters Type Name Description Int32 index Overrides Sirenix.OdinInspector.Editor.OdinEditorWindow.DrawEditor(System.Int32) | Improve this Doc View Source GetTargets() Declaration protected override IEnumerable<object> GetTargets() Returns Type Description IEnumerable < Object > Overrides Sirenix.OdinInspector.Editor.OdinMenuEditorWindow.GetTargets()"
+  },
+  "api/Global.TestData.html": {
+    "href": "api/Global.TestData.html",
+    "title": "Class TestData | Documentation",
+    "keywords": "Class TestData Inheritance Object CmsModuleData TestData Inherited Members CmsModuleData.Name CmsModuleData.foldout CmsModuleData.ToString() Namespace : Global Assembly : Assembly-CSharp.dll Syntax public class TestData : CmsModuleData Fields | Improve this Doc View Source color Declaration public Color color Field Value Type Description Color Methods | Improve this Doc View Source Populate(CmsGameObject) Declaration public override void Populate(CmsGameObject content) Parameters Type Name Description CmsGameObject content Overrides CmsModuleData.Populate(CmsGameObject)"
+  },
+  "api/Global.TestObject.html": {
+    "href": "api/Global.TestObject.html",
+    "title": "Class TestObject | Documentation",
+    "keywords": "Class TestObject Inheritance Object CmsGameObject CmsGameObject < TestData > TestObject Inherited Members CmsGameObject<TestData>.Validate() CmsGameObject.humanReadableKey Namespace : Global Assembly : Assembly-CSharp.dll Syntax [Data(typeof(TestData))] public class TestObject : CmsGameObject<TestData> Methods | Improve this Doc View Source Apply(TestData) Declaration protected override void Apply(TestData content) Parameters Type Name Description TestData content Overrides GG.UnityCMS.CmsGameObject<TestData>.Apply(TestData)"
+  },
+  "api/Global.TextMeshCmsModuleData.html": {
+    "href": "api/Global.TextMeshCmsModuleData.html",
+    "title": "Class TextMeshCmsModuleData | Documentation",
+    "keywords": "Class TextMeshCmsModuleData Inheritance Object CmsModuleData TextMeshCmsModuleData Inherited Members CmsModuleData.Name CmsModuleData.foldout CmsModuleData.ToString() Namespace : Global Assembly : GG.UnityCms.dll Syntax [Serializable] public class TextMeshCmsModuleData : CmsModuleData Fields | Improve this Doc View Source color Declaration public Color color Field Value Type Description Color | Improve this Doc View Source font Declaration public TMP_FontAsset font Field Value Type Description TMPro.TMP_FontAsset | Improve this Doc View Source fontSize Declaration public float fontSize Field Value Type Description Single Methods | Improve this Doc View Source Populate(CmsGameObject) Declaration public override void Populate(CmsGameObject content) Parameters Type Name Description CmsGameObject content Overrides CmsModuleData.Populate(CmsGameObject)"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "Title | Documentation",
+    "keywords": "Title content content"
+  }
+}
