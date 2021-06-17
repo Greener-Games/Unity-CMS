@@ -30,11 +30,14 @@ namespace GG.UnityCMS
     {
         public override void Validate()
         {
-            if (Application.isPlaying || CmsController.Instance.liveUpdate)
+            if (CmsController.Exists)
             {
-                if (CmsScriptableObject.Active.GetModule<T>(this) is T module)
+                if (Application.isPlaying || CmsController.Instance.liveUpdate)
                 {
-                    Apply(module);
+                    if (CmsScriptableObject.Active.GetModule<T>(this) is T module)
+                    {
+                        Apply(module);
+                    }
                 }
             }
         }

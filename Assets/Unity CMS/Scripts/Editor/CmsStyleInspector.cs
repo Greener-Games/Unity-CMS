@@ -24,7 +24,7 @@ namespace GG.UnityCMS.Editor
         
         protected override void OnEnable()
         {
-            if (target == null)
+            if (target == null || !CmsController.Exists)
             {
                 return;
             }
