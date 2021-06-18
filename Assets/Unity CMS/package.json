@@ -2,7 +2,7 @@
   "name": "com.greener-games.unity-cms",
   "displayName": "Unity Content Manager",
   "description": "Unity CMS system to store a local cms within the project",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "unity": "2019.3",
   "license": "MIT",
   "author": {

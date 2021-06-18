@@ -42,7 +42,7 @@ namespace GG.UnityCMS.Editor
 
         public override void OnInspectorGUI()
         {
-            if (!CmsController.Exists && CmsController.Instance.styleScriptableObject == null)
+            if (!CmsController.Exists || CmsController.Instance.styleScriptableObject == null)
             {
                 EditorGUILayout.HelpBox("Please make sure a cms controller is present and that a style is selected", MessageType.Error);
                 return;
